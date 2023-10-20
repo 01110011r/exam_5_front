@@ -1,4 +1,6 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import Router from './Router';
 
 function App() {
 
@@ -7,6 +9,9 @@ function App() {
   <h1>
     Hello apollo client!
   </h1>
+  <BrowserRouter>
+  <Router/>
+  </BrowserRouter>
   </>
   )
 }
