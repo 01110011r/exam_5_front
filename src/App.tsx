@@ -5,14 +5,12 @@ import Router from './Router';
 function App() {
 
   return (
-  <>
-  <h1>
-    Hello apollo client!
-  </h1>
-  <BrowserRouter>
-  <Router/>
-  </BrowserRouter>
-  </>
+    <div>
+     
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </div>
   )
 }
 
