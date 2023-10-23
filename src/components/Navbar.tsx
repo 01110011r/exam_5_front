@@ -8,20 +8,19 @@ import {VscAccount} from "react-icons/vsc";
 export default function
   () {
   return (
-    <div>
+    <div className="w-full bg-slate-100">
       Navbor
-      <div className="flex items-center justify-around bg-slate-100 py-3 px-1">
+      <div className="flex items-center justify-around py-3 px-1 container">
         <HiShoppingCart />
-
         <div className="categories flex bg-blue">
           <ul className="flex gap-7 items-center justify-center list-none bg-slate-400">
-            <li>all</li>
-            <li>all</li>
-            <li>all</li>
+            <li className="cursor-pointer hover:shadow-lg hover:text-sky-500">all</li>
+            <li className="cursor-pointer hover:shadow-lg hover:text-sky-500">all</li>
+            <li className="cursor-pointer hover:shadow-lg hover:text-sky-500">all</li>
           </ul>
         </div>
-          <form className="flex items-center px-2 border-2 rounded-xl border-indigo-900">
-            <input type="search" className="border-none bg-inherit py-1 outline-none text-indigo-900" />
+          <form className="flex items-center px-2 border-2 rounded-xl border-indigo-900 max-w-xs">
+            <input placeholder="Quick search..." type="search" className="border-none bg-inherit py-1 outline-none text-indigo-900 w-full" />
             <BiSearch className="cursor-pointer"/>
           </form>
 <div className="flex items-center gap-3">
