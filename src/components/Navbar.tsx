@@ -6,10 +6,13 @@ import { VscAccount } from "react-icons/vsc";
 import { LiaTelegram } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { BsTelephoneForward } from "react-icons/bs";
+// import { useState } from "react";
 
 
-export default function
-  () {
+export default function() {
+
+
+  // const {select, setSelect}=useState('') as any
   return (
     <div className="fixed w-full top-0 bg-slate-100">
       <div className=" bg-blue-950 p-2  w-full">
@@ -25,10 +28,14 @@ export default function
       </div>
       <div className="flex relative items-center justify-around py-3 px-1 container">
         <HiShoppingCart />
-        <div className="categories flex bg-blue">
-       
+        <div className=" w-36 h-8 flex items-center justify-center px-4 rounded-md bg-indigo-800 ">
+        <select name="kdkvdsk" id="sdc" className=" w-full rounded-s-lg bg-inherit text-white ">
+            <option value="dgdgsdg" >adddssfdsfdsgkdkfgdjjdsjfgdjgjdfjgdj</option>
+            <option value="dgdgsdg">b</option>
+            <option value="dgdgsdg">c</option>
+          </select>
         </div>
-        <form className="flex items-center px-2 border-2 rounded-xl max-w-xs">
+        <form className="flex items-center px-2 border-2 rounded-xl max-w-xs border-stone-400">
           <input placeholder="Quick search..." type="search" className="border-none bg-inherit py-1 outline-none text-indigo-900 w-full" />
           <BiSearch className="cursor-pointer" />
         </form>
@@ -37,13 +44,7 @@ export default function
           <MdAddShoppingCart className="cursor-pointer" />
           <VscAccount className="cursor-pointer" />
         </div>
-        <div className="absolute bg-slate-600 w-48 left-0 top-16 min-h-full">
-        <ul className="gap-7 items-center justify-center list-none">
-            <li className="cursor-pointer hover:shadow-lg hover:text-sky-500">all</li>
-            <li className="cursor-pointer hover:shadow-lg hover:text-sky-500">all</li>
-            <li className="cursor-pointer hover:shadow-lg hover:text-sky-500">all</li>
-          </ul>
-        </div>
+      
       </div>
     </div>
   )
