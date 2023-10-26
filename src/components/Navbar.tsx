@@ -6,13 +6,15 @@ import { VscAccount } from "react-icons/vsc";
 import { LiaTelegram } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { BsTelephoneForward } from "react-icons/bs";
-// import { useState } from "react";
+import { useState } from "react";
 
 
 export default function() {
 
 
-  // const {select, setSelect}=useState('') as any
+  const [select, setSelect]=useState<string>('');
+  console.log(select);
+  
   return (
     <div className="fixed w-full top-0 bg-slate-100">
       <div className=" bg-blue-950 p-2  w-full">
@@ -29,10 +31,10 @@ export default function() {
       <div className="flex relative items-center justify-around py-3 px-1 container">
         <HiShoppingCart />
         <div className=" w-36 h-8 flex items-center justify-center px-4 rounded-md bg-indigo-800 ">
-        <select name="kdkvdsk" id="sdc" className=" w-full rounded-s-lg bg-inherit text-white ">
-            <option value="dgdgsdg" >adddssfdsfdsgkdkfgdjjdsjfgdjgjdfjgdj</option>
-            <option value="dgdgsdg">b</option>
-            <option value="dgdgsdg">c</option>
+        <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {setSelect(event.target.value)}} name="select_name" id="select_id" className=" w-full rounded-s-lg bg-inherit text-white ">
+            <option value="a" >a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
           </select>
         </div>
         <form className="flex items-center px-2 border-2 rounded-xl max-w-xs border-stone-400">
