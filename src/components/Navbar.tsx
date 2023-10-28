@@ -9,15 +9,16 @@ import { AiOutlineClose } from "react-icons/ai";
 import {VscColorMode} from "react-icons/vsc";
 import {PiSignOutBold} from "react-icons/pi";
 import { gql, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MyContext } from "./MyContext";
 
 
 
 export default function () {
-
+const {topnav}=useContext(MyContext)
   const [select, setSelect] = useState<string>('all');
-  const [topnav, setTopnav] = useState<boolean>(true);
-  const [account, setAccount] = useState<boolean>(false);
+  // const [topnav, setTopnav] = useState<boolean>(true);
+  // const [account, setAccount] = useState<boolean>(false);
   console.log(select);
   // console.log(topnav);
   // console.log(account);
@@ -90,11 +91,7 @@ GetCategories();
         </div>
         <div className="flex items-center w-full justify-around md:hidden">
           <div className=" w-36 h-8 flex items-center justify-center px-4 mr-2 rounded-md sm:bg-black bg-indigo-800">
-            <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setSelect(event.target.value) }} name="select_name" id="select_id" className=" w-full rounded-s-lg bg-inherit text-white cursor-pointer">
-              <option value="a" >a</option>
-              <option value="b">b</option>
-              <option value="c">c</option>
-            </select>
+           <GetCategories/>
           </div>
           <form className="flex items-center px-2 border-2 rounded-xl max-w-xs sm:min-w-max border-stone-400 lg:min-w-[36rem]">
             <input placeholder="Quick search..." type="search" className="border-none bg-inherit py-1 outline-none text-indigo-900 w-full" />
@@ -107,9 +104,9 @@ GetCategories();
 
       <VscAccount className="cursor-pointer mt-7 w-11 h-11" onClick={()=>setAccount(!account)}/>
       <ul className=" mt-16 flex flex-col gap-y-2">
-        <li className="flex gap-3 items-center cursor-pointer">
+        <li className="flex w-full gap-3 items-center cursor-pointer">
 <VscColorMode/>
- <div className=" max-w-[36rem] min-w-[20rem]">
+ <div className=" max-w-[36rem] min-w-[10rem]">
 <select name="colormode" id="colormode" className=" bg-inherit cursor-pointer">
   <option value="white">white</option>
   <option value="dark">dark</option>
