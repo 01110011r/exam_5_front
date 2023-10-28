@@ -19,8 +19,8 @@ export default function () {
   const [topnav, setTopnav] = useState<boolean>(true);
   const [account, setAccount] = useState<boolean>(false);
   console.log(select);
-  console.log(topnav);
-  console.log(account);
+  // console.log(topnav);
+  // console.log(account);
 
 
   const GET_CATEGORIES = gql`
@@ -35,25 +35,25 @@ export default function () {
 function GetCategories() {
   const { loading, error, data } = useQuery(GET_CATEGORIES);
 console.log(data);
-console.log(error);
 
 
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
+  if (loading) return <p className=" text-white">Loading...</p>;
+  if (error) return <p className=" text-white">Error : {error.message}</p>;
 console.log(data);
 
-  return data.categories.map(({ category_id, category_name}:any) => (
-    <div key={category_id}>
-      <h3>{category_name}</h3>
-    </div>
-  ));
+  return <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setSelect(event.target.value) }} name="select_name" id="select_id" className=" w-full rounded-s-lg bg-inherit text-white cursor-pointer">
+{ 
+data.categories.map(({ category_id, category_name}:any) => (
+        <option key={category_id} value={category_name}>{category_name.toUpperCase()}</option>
+    ))
+    }
+  </select>;
 }
 
 GetCategories();
   return (
     <>
-    <div className="fixed w-full top-0 bg-slate-200">
+    <div className="fixed w-full top-0 bg-zinc-800">
       <div className={`relative bg-blue-950 p-2  w-full ${!topnav ? "hidden" : ""}`}>
         <div className="container flex items-center justify-around">
           <p className=" text-white">Lorem ipsum dolor sit amet.</p>
@@ -68,18 +68,14 @@ GetCategories();
         </div>
         <AiOutlineClose className={`text-red-400 hover:text-red-700 absolute top-2 right-2 cursor-pointer`} onClick={() => setTopnav(!topnav)} />
       </div>
-      <div className="flex flex-col gap-y-2 relative items-center justify-between py-3 px-2 container md:flex-row">
+      <div className="flex flex-col gap-y-2 relative items-center justify-between py-5 px-2 container md:flex-row">
         <div className="flex items-center justify-between w-full">
           <Link to={'#'}>
-            <h2 className="text-2xl italic font-bold text-cyan-900 hover:text-cyan-700">#texnomart</h2>
+            <h2 className="text-3xl italic font-bold text-white hover:text-yellow-50">#texnomart</h2>
           </Link>
           <div className="items-center w-full justify-around md:flex hidden">
-            <div className=" w-36 h-8 flex items-center justify-center px-4 rounded-md sm:bg-black bg-indigo-800">
-              <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setSelect(event.target.value) }} name="select_name" id="select_id" className=" w-full rounded-s-lg bg-inherit text-white cursor-pointer">
-                <option value="a" >a</option>
-                <option value="b">b</option>
-                <option value="c">c</option>
-              </select>
+            <div className=" w-36 h-8 flex items-center justify-center px-4 rounded-md sm:bg-yellow-600 bg-indigo-800">
+              <GetCategories/>
             </div>
             <form className="flex items-center px-2 border-2 rounded-xl max-w-xs sm:min-w-max border-stone-400 lg:min-w-[36rem]">
               <input placeholder="Quick search..." type="search" className="border-none bg-inherit py-1 outline-none text-indigo-900 w-full" />
