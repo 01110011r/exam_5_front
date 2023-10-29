@@ -1,17 +1,20 @@
-import { FC, createContext, useState } from 'react';
-import { ContextType } from '../types/types';
-
-
-export const Context=createContext<any>(null);
-
-export const MyContext:FC =({children})=> {
-
-    const [topnav, setTopnav] = useState<boolean>(true);
-    const [account, setAccount] = useState<boolean>(false);
+import { createContext, useContext, useState } from 'react';
+import { ContextT } from '../types/types';
 
 
 
-  return (
-    <Context.Provider value={{topnav, setTopnav, account, setAccount}}>{children}</Context.Provider>
-  )
+
+export const MyContext =():ContextT=> {
+  const [topnav, setTopnav] = useState<boolean>(true);
+  const [account, setAccount] = useState<boolean>(false);
+  const [select, setSelect] = useState<string>('all');
+
+  console.log(topnav);
+  console.log(account);
+  
+  const Context=createContext({topnav, setAccount, setTopnav, account, select, setSelect});
+  
+  const contextBox=useContext(Context);
+
+  return contextBox;
 }

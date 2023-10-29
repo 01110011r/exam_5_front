@@ -3,7 +3,7 @@ import './App.css';
 import Router from './Router';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { MyContext } from './components/MyContext';
+// import { MyContext } from './components/MyContext';
 
 function App() {
 
@@ -11,11 +11,11 @@ function App() {
     <div className=' h-screen relative'>
 
       <BrowserRouter>
-      <MyContext>
+      {/* <MyContext> */}
         <Navbar />
         <Router />
         <Footer />
-      </MyContext>
+      {/* </MyContext> */}
       </BrowserRouter>
     </div>
   )

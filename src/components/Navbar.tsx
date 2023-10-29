@@ -9,19 +9,13 @@ import { AiOutlineClose } from "react-icons/ai";
 import {VscColorMode} from "react-icons/vsc";
 import {PiSignOutBold} from "react-icons/pi";
 import { gql, useQuery } from "@apollo/client";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { MyContext } from "./MyContext";
 
 
 
 export default function () {
-const {topnav}=useContext(MyContext)
-  const [select, setSelect] = useState<string>('all');
-  // const [topnav, setTopnav] = useState<boolean>(true);
-  // const [account, setAccount] = useState<boolean>(false);
-  console.log(select);
-  // console.log(topnav);
-  // console.log(account);
+  const {account, topnav, setAccount, setTopnav, select, setSelect} = MyContext();
 
 
   const GET_CATEGORIES = gql`
@@ -51,7 +45,6 @@ data.categories.map(({ category_id, category_name}:any) => (
   </select>;
 }
 
-GetCategories();
   return (
     <>
     <div className="fixed w-full top-0 bg-zinc-800">
@@ -71,7 +64,7 @@ GetCategories();
       </div>
       <div className="flex flex-col gap-y-2 relative items-center justify-between py-5 px-2 container md:flex-row">
         <div className="flex items-center justify-between w-full">
-          <Link to={'#'}>
+          <Link to={'/'}>
             <h2 className="text-3xl italic font-bold text-white hover:text-yellow-50">#texnomart</h2>
           </Link>
           <div className="items-center w-full justify-around md:flex hidden">
