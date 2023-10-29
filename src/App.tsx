@@ -8,14 +8,12 @@ import Footer from './components/Footer';
 function App() {
 
   return (
-    <div className=' h-screen relative'>
+    <div className=' min-h-screen flex flex-col relative'>
 
       <BrowserRouter>
-      {/* <MyContext> */}
         <Navbar />
         <Router />
         <Footer />
-      {/* </MyContext> */}
       </BrowserRouter>
     </div>
   )

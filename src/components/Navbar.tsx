@@ -35,11 +35,13 @@ console.log(data);
   if (loading) return <p className=" text-white">Loading...</p>;
   if (error) return <p className=" text-white">Error : {error.message}</p>;
 console.log(data);
+console.log(select);
 
-  return <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setSelect(event.target.value) }} name="select_name" id="select_id" className=" w-full rounded-s-lg bg-inherit text-white cursor-pointer">
+
+  return <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setSelect(event.target.value) }} name="select_name" id="select_id" className=" capitalize w-full rounded-s-lg bg-inherit text-white cursor-pointer">
 { 
 data.categories.map(({ category_id, category_name}:any) => (
-        <option key={category_id} value={category_name}>{category_name.toUpperCase()}</option>
+        <option key={category_id} value={category_id}>{category_name}</option>
     ))
     }
   </select>;
@@ -76,10 +78,37 @@ data.categories.map(({ category_id, category_name}:any) => (
               <BiSearch className="cursor-pointer" />
             </form>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 relative">
             <FcLike className="cursor-pointer w-6 h-6" />
             <MdAddShoppingCart className="cursor-pointer w-6 h-6" />
             <VscAccount className="cursor-pointer w-6 h-6" onClick={()=>setAccount(!account)}/>
+            <div className={` absolute z-10 top-8 -left-full duration-200 ${account ? " block" : " hidden"}`}>
+        <div className=" max-w-[15rem] bg-gray-900 text-white opacity-95 p-2 pl-3 rounded-lg">
+
+      <ul className="flex flex-col gap-y-2">
+        <li>
+      <Link to={'#'} className="flex w-full gap-3 items-center cursor-pointer">
+      <VscAccount onClick={()=>setAccount(!account)}/>
+      <span className=" capitalize">me</span>
+      </Link>
+        </li>
+        <li className="flex w-full gap-3 items-center cursor-pointer">
+<VscColorMode/>
+ <div className=" max-w-[15rem] min-w-[10rem]">
+<select name="colormode" id="colormode" className=" bg-inherit cursor-pointer">
+  <option value="white">white</option>
+  <option value="dark">dark</option>
+</select>
+</div>
+        </li>
+        <li className="flex gap-3 items-center cursor-pointer">
+          <PiSignOutBold/>
+          <p>Sign Out</p>
+        </li>
+      </ul>
+        </div>
+
+      </div>
           </div>
         </div>
         <div className="flex items-center w-full justify-around md:hidden">
@@ -92,8 +121,8 @@ data.categories.map(({ category_id, category_name}:any) => (
           </form>
         </div>
       </div>
-      <div className={`fixed z-10 top-0 h-full w-[80%] bg-slate-500 duration-200 ${account ? "left-0" : "-left-full"}`}>
-        <div className="container">
+      {/* <div className={`fixed z-10 top-0 h-full container bg-slate-500 duration-200 ${account ? "right-0" : "-top-full"}`}>
+        <div className=" max-w-[15rem]">
 
       <VscAccount className="cursor-pointer mt-7 w-11 h-11" onClick={()=>setAccount(!account)}/>
       <ul className=" mt-16 flex flex-col gap-y-2">
@@ -113,7 +142,7 @@ data.categories.map(({ category_id, category_name}:any) => (
       </ul>
         </div>
 
-      </div>
+      </div> */}
     </div>
       <GetCategories/>
     </>
