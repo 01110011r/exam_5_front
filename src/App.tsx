@@ -3,7 +3,6 @@ import './App.css';
 import Router from './Router';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-// import { MyContext } from './components/MyContext';
 
 function App() {
 

@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { MyContext } from "./MyContext";
+import Card from "./Card";
 
 
 
@@ -9,19 +10,33 @@ export default function Home() {
   console.log(select);
 
   const GET_PRODUCT = gql`
-query Get_product($category_id:String){
-  category(category_id:$category_id){
-    category_id
-    category_name
-    products
+query Product($id:String){
+  product(product_id:$id){
+    product_id
+    product_name
+    
+  }
+}
+`;
+const GET_PRODUCTS = gql`
+query Product{
+  products{
+    product_id
+    product_name
+    
   }
 }
 `;
 
-    const { loading, error, data } = useQuery(GET_PRODUCT, {
-      variables: { select }
-    });
+  const { loading, error, data } = useQuery(GET_PRODUCT, {
+    variables:{
+      id:"2ue12ehqwh"
+    }
+  });
   console.log(data);
+console.log(error);
+console.log(loading);
+
 
 
   if (loading) return 'Loading...';
@@ -29,8 +44,9 @@ query Get_product($category_id:String){
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div className="mt-36">
-      <h2 className=" text-center">home</h2>
+    <div className=" mt-64">
+      <h5>home</h5>
+      {/* <Card {...data} /> */}
     </div>
   )
 }

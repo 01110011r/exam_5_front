@@ -9,7 +9,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import {VscColorMode} from "react-icons/vsc";
 import {PiSignOutBold} from "react-icons/pi";
 import { gql, useQuery } from "@apollo/client";
-import { useState } from "react";
 import { MyContext } from "./MyContext";
 
 
@@ -29,7 +28,7 @@ export default function () {
 
 function GetCategories() {
   const { loading, error, data } = useQuery(GET_CATEGORIES);
-console.log(data);
+console.log(error);
 
 
   if (loading) return <p className=" text-white">Loading...</p>;
