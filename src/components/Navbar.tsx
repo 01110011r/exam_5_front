@@ -33,8 +33,8 @@ console.log(error);
 
   if (loading) return <p className=" text-white">Loading...</p>;
   if (error) return <p className=" text-white">Error : {error.message}</p>;
-console.log(data);
-console.log(select);
+// console.log(data);
+// console.log(select);
 
 
   return <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setSelect(event.target.value) }} name="select_name" id="select_id" className=" capitalize w-full rounded-s-lg bg-inherit text-white cursor-pointer">

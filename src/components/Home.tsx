@@ -10,32 +10,27 @@ export default function Home() {
   console.log(select);
 
   const GET_PRODUCT = gql`
-query Product($id:String){
-  product(product_id:$id){
-    product_id
-    product_name
-    
+query Product($id:ID!){
+  category(category_id:$id){
+    category_id
+    category_name
+    products{
+      product_id
+      product_name
   }
-}
-`;
-const GET_PRODUCTS = gql`
-query Product{
-  products{
-    product_id
-    product_name
-    
   }
 }
 `;
 
+
   const { loading, error, data } = useQuery(GET_PRODUCT, {
     variables:{
-      id:"2ue12ehqwh"
+      id: select
     }
   });
-  console.log(data);
+  // console.log(data);
 console.log(error);
-console.log(loading);
+// console.log(loading);
 
 
 
@@ -46,7 +41,7 @@ console.log(loading);
   return (
     <div className=" mt-64">
       <h5>home</h5>
-      {/* <Card {...data} /> */}
+      <Card {...data} />
     </div>
   )
 }

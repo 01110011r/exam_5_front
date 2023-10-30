@@ -1,9 +1,7 @@
 import { useRef } from "react";
 import sideimg from "../../public/SideImage.jpg";
-
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { gql, useMutation } from "@apollo/client";
-
 
 
 export default function Signup() {
@@ -16,10 +14,8 @@ export default function Signup() {
   const SIGN_UP = gql`
   mutation Signup($username: String!, $email: String!, $password: String!, $file: Upload!) {
     signup(username: $username, email: $email, password: $password, file: $file) {
-      username
-      email
-      password
-      file
+      msg
+      data
     }
   }
 `;
@@ -27,8 +23,8 @@ export default function Signup() {
 
   const [createUser, { data, loading, error }] = useMutation(SIGN_UP);
   console.log(data);
-console.log(loading);
-console.log(error);
+  console.log(loading);
+  console.log(error);
 
 
 
@@ -53,13 +49,14 @@ console.log(error);
 
   }
 
+  console.log(file.current?.files?.[0]);
 
   return (
     <div>
       <div className=" container flex justify-around">
         <div className="mt-[57%] xl:mt-[15%] lg:mt-[20%] md:mt-[25%] mr-2">
           <h2 className="mb-2">Create an account</h2>
-          <form onSubmit={(e) =>{e.preventDefault(); sender()}} method="post" className="flex flex-col gap-y-4">
+          <form onSubmit={(e) => { e.preventDefault(); sender() }} method="post" className="flex flex-col gap-y-4">
             <input ref={username} className="border-2 py-1 border-t-0 border-x-0 bg-inherit" type="text" placeholder="username" />
             <input ref={email} className="border-2 py-1 border-t-0 border-x-0 bg-inherit" type="email" name="email" id="email" placeholder="email" />
             <input ref={password} className="border-2 py-1 border-t-0 border-x-0 bg-inherit" type="password" name="passwd" id="passwd" placeholder="password" />

@@ -1,4 +1,5 @@
-import React from 'react'
+import img from "../../public/SideImage.jpg";
+
 
 export default function Card({...data}:[]) {
 
@@ -8,8 +9,10 @@ export default function Card({...data}:[]) {
   return (
     <div>
 <div className=" max-w-[15rem]">
-  <img src="" alt="" />
-  <h3>{data}</h3>
+  <div className=" max-w-[16rem] max-h-80">
+<img src={img} alt="test img" className=" w-full"/>
+  </div>
+  <h3>Card</h3>
 </div>
     </div>
   )
