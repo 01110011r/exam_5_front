@@ -46,6 +46,13 @@ data.categories.map(({ category_id, category_name}:any) => (
   </select>;
 }
 
+
+
+const handleLogout=():void=>{
+localStorage.clear();
+window.location.pathname='signin';
+}
+
   return (
     <>
     <div className="fixed w-full top-0 bg-zinc-800">
@@ -100,7 +107,7 @@ data.categories.map(({ category_id, category_name}:any) => (
 </select>
 </div>
         </li>
-        <li className="flex gap-3 items-center cursor-pointer">
+        <li className="flex gap-3 items-center cursor-pointer" onClick={handleLogout}>
           <PiSignOutBold/>
           <p>Sign Out</p>
         </li>

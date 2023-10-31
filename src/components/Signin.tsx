@@ -23,18 +23,16 @@ export default function Signin() {
 
   const [getUser, { data, loading, error }] = useMutation(SIGN_IN);
   console.log(data);
-  console.log(loading);
-  console.log(error);
+  // console.log(loading);
+  // console.log(error);
 
 
 
-  console.log(username);
   function sender() {
     if (username.current?.value.trim() == "") return alert('wrong username!   :(');
     if (email.current?.value.trim() == "") return alert("wrong email!  :(");
     if (password.current?.value.trim() == "") return alert("wrong password!  :(");
 
-    console.log('ok');
 
     getUser({
       variables: {
@@ -46,7 +44,19 @@ export default function Signin() {
 
   }
 
-
+  if(error&&error.message){
+    alert(error?.message)
+    };
+    
+    if(data?.signin?.msg=="ok"&&data.signin.data?.token){
+    const token:string=data.signin.data?.token;
+    console.log(token);
+    
+      localStorage.setItem('token',token);
+    {/* <Navigate to={'/'}/> */}
+    window.location.pathname='/';
+    };
+    
 
   return (
     <div>
@@ -59,6 +69,8 @@ export default function Signin() {
             <input ref={password} className="border-2 py-1 border-t-0 border-x-0 bg-inherit" type="password" name="passwd" id="passwd" placeholder="password"/>
             <input type="submit" value="submit" className=" border-2 mt-4 cursor-pointer bg-neutral-950 text-white py-2 inline-block" />
           </form>
+          <span className=" text-red-600">{data?.signin&&data.signin.msg!="ok" ? data.signin.msg : ""}</span>
+          
           <Link to="/signup">
           <p className=" mt-2">signup...</p>
           </Link>
