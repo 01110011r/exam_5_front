@@ -1,3 +1,5 @@
+import { ApolloError } from "@apollo/client";
+
 export interface ContextT{
     topnav: boolean;
     setAccount: React.Dispatch<React.SetStateAction<boolean>>;
@@ -5,4 +7,7 @@ export interface ContextT{
     account: boolean;
     select:string;
     setSelect:React.Dispatch<React.SetStateAction<string>>;
+    data:any;
+    loading:boolean;
+    error:ApolloError | undefined;
 }

@@ -3,10 +3,14 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import App from './App';
 import "./index.css";
 
+const token=localStorage.getItem('token') || 'tokenyoq';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5555',
   cache: new InMemoryCache(),
+  headers:{
+    token
+  }
 });
 
 

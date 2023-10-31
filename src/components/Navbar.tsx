@@ -8,33 +8,31 @@ import { TiLocation } from "react-icons/ti";
 import { AiOutlineClose } from "react-icons/ai";
 import {VscColorMode} from "react-icons/vsc";
 import {PiSignOutBold} from "react-icons/pi";
-import { gql, useQuery } from "@apollo/client";
+// import { gql, useQuery } from "@apollo/client";
 import { MyContext } from "./MyContext";
 
 
 
 export default function () {
-  const {account, topnav, setAccount, setTopnav, select, setSelect} = MyContext();
+  const {account, topnav, setAccount, setTopnav, select, setSelect, data, loading, error} = MyContext();
 
+console.log(data, loading, error);
 
-  const GET_CATEGORIES = gql`
-  query GetCategories {
-    categories {
-      category_id
-      category_name
-    }
-  }
-`;
+//   const GET_CATEGORIES = gql`
+//   query GetCategories {
+//     categories {
+//       category_id
+//       category_name
+//     }
+//   }
+// `;
 
 function GetCategories() {
-  const { loading, error, data } = useQuery(GET_CATEGORIES);
-console.log(error);
+  // const { loading, error, data } = useQuery(GET_CATEGORIES);
 
 
   if (loading) return <p className=" text-white">Loading...</p>;
   if (error) return <p className=" text-white">Error : {error.message}</p>;
-// console.log(data);
-// console.log(select);
 
 
   return <select value={select} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => { setSelect(event.target.value) }} name="select_name" id="select_id" className=" capitalize w-full rounded-s-lg bg-inherit text-white cursor-pointer">
@@ -88,7 +86,7 @@ window.location.pathname='signin';
             <FcLike className="cursor-pointer w-6 h-6" />
             <MdAddShoppingCart className="cursor-pointer w-6 h-6" />
             <VscAccount className="cursor-pointer w-6 h-6" onClick={()=>setAccount(!account)}/>
-            <div className={` absolute z-10 top-8 -left-full duration-200 ${account ? " block" : " hidden"}`}>
+            <div className={` absolute z-10 top-8 -left-full duration-100 ${account ? " block" : " scale-0"}`}>
         <div className=" max-w-[15rem] bg-gray-900 text-white opacity-95 p-2 pl-3 rounded-lg">
 
       <ul className="flex flex-col gap-y-2">
