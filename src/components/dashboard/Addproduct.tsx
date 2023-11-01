@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { GrAdd } from 'react-icons/gr'
 import { Link, useParams } from 'react-router-dom'
 import { MyContext } from '../MyContext';
+// import {createUploadLink} from "apollo-upload-client";
 
 
 
@@ -21,24 +22,23 @@ export default function Addproduct() {
     const quantity = useRef<HTMLInputElement>(null);
     const file = useRef<HTMLInputElement>(null);
 
-    console.log(productname, file);
 
 
     const ADD_PRODUCT = gql`
-       mutation Addproduct($product_name:String, $price:Int, $measurement:String, $quantity:Int, $category_id:ID, $file:Any){
+       mutation Addproduct($product_name:String, $price:Int, $measurement:String, $quantity:Int, $category_id:ID, $file:Upload){
        addproduct(product_name:$product_name, price:$price, measurement:$measurement, quantity:$quantity, category_id:$category_id, file:$file){
             msg
             data
-}
-}
-`;
+     }
+     }
+       `;
 
     const [createProduct, { error }] = useMutation(ADD_PRODUCT);
+
     console.log(quantity.current?.value, typeof quantity.current?.value);
     console.log(file.current?.files?.item(0), typeof file.current?.files);
-    console.log('pname' + productname.current?.value);
-    console.log('id ' + select);
-
+    console.log('pname: ' + productname.current?.value);
+    console.log('id: ' + select);
     console.log(error);
 
 
@@ -51,15 +51,16 @@ export default function Addproduct() {
         if (file.current?.files?.item(0)?.type.slice(0, 5) != "image") return alert("The uploaded file is not image. Upload an image!  :(");
 
         const formData = new FormData();
-        formData.append('file', file.current.files[0]);
+        formData.append('$file', file.current.files[0]);
+
         createProduct({
             variables: {
                 product_name: productname.current?.value,
                 price: Number(price.current?.value),
                 measurement: measurement.current?.value,
                 quantity: Number(quantity.current?.value),
-                category_id: Number(select),
-                file: file.current.files.item(0)
+                category_id: select,
+                file: formData
             }
         });
 
