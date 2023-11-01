@@ -11,14 +11,14 @@ export default function Home() {
   console.log(select);
 
   const GET_PRODUCT = gql`
-query Product($id:ID!){
-  category(category_id:$id){
-    category_id
-    category_name
-    products{
+query Product{
+  products{
       product_id
       product_name
-  }
+      price
+      measurement
+      quantity
+      img
   }
 }
 `;
@@ -29,7 +29,7 @@ query Product($id:ID!){
       id: select
     }
   });
-  // console.log(data);
+  console.log(data);
 console.log(error);
 // console.log(loading);
 
@@ -40,7 +40,7 @@ console.log(error);
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div className=" mt-64">
+    <div className="mt-64">
       <h5>home</h5>
       <Card {...data} />
     </div>

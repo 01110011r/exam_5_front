@@ -19,7 +19,7 @@ export const MyContext = ():ContextT=> {
   const { loading, error, data } = useQuery(GET_CATEGORIES);
 console.log(data);
 
-const defaultCategory= "acbcfa72-5140-4473-80d4-726397e60ba7";
+const defaultCategory= "b45fb97b-7b7c-4cc3-92bc-3cff26f7ea04";
 
 
   const [topnav, setTopnav] = useState<boolean>(true);

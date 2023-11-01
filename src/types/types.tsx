@@ -11,3 +11,13 @@ export interface ContextT{
     loading:boolean;
     error:ApolloError | undefined;
 }
+
+
+export interface ProductT{
+    product_id:string,
+      product_name:string,
+      price:number,
+      measurement:string,
+      quantity:number
+      img:string
+}
