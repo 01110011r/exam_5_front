@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import { MyContext } from "./MyContext";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 
 
 
@@ -31,8 +32,6 @@ query Product{
   });
   console.log(data);
 console.log(error);
-// console.log(loading);
-
 
 
   if (loading) return 'Loading...';
@@ -40,8 +39,8 @@ console.log(error);
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div className="mt-64">
-      <h5>home</h5>
+    <div className="mt-36 mb-12 container">
+                <span><Link to={'/'} className=' opacity-50'>home / </Link></span>
       <Card {...data} />
     </div>
   )

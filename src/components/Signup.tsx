@@ -41,7 +41,7 @@ export default function Signup() {
       }
     });
 
-  }
+  };
 
   // console.log(file.current?.files?.[0]);
 if(error&&error.message){

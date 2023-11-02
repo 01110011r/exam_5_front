@@ -68,7 +68,7 @@ export default function Addproduct() {
 
 
     return (
-        <div className=' bg-slate-400 mt-36'>
+        <div className='mt-36'>
             <div className=" container">
                 <main className=' py-8'>
                     <section className=' flex items-center justify-around border-b-2 mb-8'>
@@ -97,11 +97,3 @@ export default function Addproduct() {
     )
 }
 
-
-// product_id:ID
-// product_name:String
-// price:Int
-// measurement:String
-// quantity:Int
-// category_id:ID
-// img
