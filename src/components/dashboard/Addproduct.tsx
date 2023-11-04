@@ -35,10 +35,6 @@ export default function Addproduct() {
 
     const [createProduct, { error }] = useMutation(ADD_PRODUCT);
 
-    console.log(quantity.current?.value, typeof quantity.current?.value);
-    console.log(file.current?.files?.item(0), typeof file.current?.files);
-    console.log('pname: ' + productname.current?.value);
-    console.log('id: ' + select);
     console.log(error);
 
 

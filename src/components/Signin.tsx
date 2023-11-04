@@ -53,7 +53,6 @@ export default function Signin() {
     console.log(token);
     
       localStorage.setItem('token',token);
-    {/* <Navigate to={'/'}/> */}
     window.location.pathname='/';
     };
     

@@ -20,9 +20,8 @@ export default function Signup() {
 `;
 
 
-  const [createUser, { data, loading, error }] = useMutation(SIGN_UP);
+  const [createUser, { data, error }] = useMutation(SIGN_UP);
   console.log(data);
-  // console.log(loading);
   console.log(error);
 
 
@@ -43,7 +42,6 @@ export default function Signup() {
 
   };
 
-  // console.log(file.current?.files?.[0]);
 if(error&&error.message){
 alert(error?.message)
 };
@@ -51,7 +49,6 @@ alert(error?.message)
 if(data?.signup?.msg=="ok"&&data.signup.data?.token){
 const token:string=data.signup.data?.token;
   localStorage.setItem('token',token);
-{/* <Navigate to={'/'}/> */}
 window.location.pathname='/';
 };
 
@@ -64,7 +61,6 @@ window.location.pathname='/';
             <input ref={username} className="border-2 py-1 border-t-0 border-x-0 bg-inherit" type="text" placeholder="username" />
             <input ref={email} className="border-2 py-1 border-t-0 border-x-0 bg-inherit" type="email" name="email" id="email" placeholder="email" />
             <input ref={password} className="border-2 py-1 border-t-0 border-x-0 bg-inherit" type="password" name="passwd" id="passwd" placeholder="password" />
-            {/* <input ref={file} className="bg-inherit cursor-pointer" type="file" name="file" id="file" placeholder="choose file" /> */}
             <input type="submit" value="submit" className=" border-2 mt-4 cursor-pointer bg-neutral-950 text-white py-2 inline-block" />
           </form>
           <span className=" text-red-600">{data?.signup&&data.signup.msg!="ok" ? data.signup.msg : ""}</span>

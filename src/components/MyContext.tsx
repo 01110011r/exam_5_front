@@ -27,9 +27,7 @@ const defaultCategory= "b45fb97b-7b7c-4cc3-92bc-3cff26f7ea04";
   const [dark, setDark]=useState<boolean>(localStorage.getItem("dark")=="false" ? false : true );
   const [search, setSearch]=useState<string>('');
 
-  // if(search!=""){
-  //   data.products.filter(e=>e.product_name.includes(search))
-  // }
+
   
   const Context=createContext({topnav, setAccount, setTopnav, account, select, setSelect, data, loading, error, dark, setDark, search, setSearch});
   
