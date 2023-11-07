@@ -21,10 +21,9 @@ export default function Signin() {
 `;
 
 
-  const [getUser, { data, loading, error }] = useMutation(SIGN_IN);
+  const [getUser, { data, error }] = useMutation(SIGN_IN);
   console.log(data);
-  // console.log(loading);
-  // console.log(error);
+
 
 
 

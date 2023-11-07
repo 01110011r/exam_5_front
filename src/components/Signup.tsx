@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import sideimg from "../../public/SideImage.jpg";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { gql, useMutation } from "@apollo/client";
 
 

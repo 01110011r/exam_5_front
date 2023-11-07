@@ -6,7 +6,6 @@ import { MyContext } from "./MyContext";
 
 export default function Footer() {
 const {dark}=MyContext();
-console.log(dark);
 
     return (
         <div className={` w-full opacity-95 mt-auto py-5 ${dark ? "bg-gray-900 text-white" : "bg-zinc-200"}`}>

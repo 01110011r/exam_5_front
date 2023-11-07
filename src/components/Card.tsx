@@ -24,12 +24,12 @@ export default function Card({ ...data }: { products: [ProductT] }) {
   const [BuyFunc, { error }] = useMutation(BUY);
   console.log(error);
 
-  let newData: ProductT[] = [];
-  if (search != "") {
-    newData = data.products.map(e =>e);
-  }else{
+  // let newData: ProductT[] = [];
+  // if (search != "") {
+  //   newData = data.products.map(e =>e);
+  // }else{
 
-  }
+  // }
 
 
 

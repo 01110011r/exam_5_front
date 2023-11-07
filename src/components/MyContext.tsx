@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { ContextT, ProductT } from '../types/types';
+import { ContextT } from '../types/types';
 import { gql, useQuery } from '@apollo/client';
 
 
